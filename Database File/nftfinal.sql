@@ -186,9 +186,9 @@ CREATE TABLE `auth` (
 --
 
 INSERT INTO `auth` (`id`, `userimage`, `userbackimage`, `username`, `userabout`, `firstname`, `lastname`, `phone`, `gender`, `email`, `password`, `user_role`, `joindate`, `jointime`, `deactivationdate`, `status`, `accept_terms`, `strikes`) VALUES
-(1, 'Assets/Auth/person.png', 'Assets/background/001.png', 'admin', 'Hi, I am Admin...', 'Vivek', 'Surati', '8849278985', 'male', 'nftmarketplace.acs@gmail.com', '$2y$10$9UrXl3v.aLL3CGrqJvX9TueNz0xTGSMBmwf0yHs4jdqhHb0Vn8Oiy', 'admin', '2024-03-24', '11:12:59', '0000-00-00', NULL, 1, NULL),
-(2, 'Assets/Auth/IMG_2023-01-14-15-19-12-319.jpg', NULL, 'jay_', NULL, 'Jay', 'Surati', '6356412805', 'male', 'jaysurti0903@gmail.com', '$2y$10$o7Xj295mljOfWy1d0LOK.OSDmMm3YlhAcUgdzCYr4ykt30fJBfEyW', 'user', '2024-03-24', '12:15:04', '2024-04-15', 'strike', 1, '2'),
-(3, 'Assets/Auth/BEN 10 PFP.PNG', NULL, 'vivek', NULL, 'vivek', 'surati', '8850309085', 'male', 'viveksurati04@gmail.com', '$2y$10$AGXWvqEz.PMx8lAIdbd9TOj9F3uugn6CsCi92tRts5w4o.0aMTovm', 'user', '2024-03-24', '14:37:35', '2024-04-22', 'strike', 1, '3');
+(1, 'Assets/Auth/person.png', 'Assets/background/001.png', 'admin', 'Hi, I am Admin...', 'Vivek', 'Surati', '1234567890', 'male', 'nftmarketplace@gmail.com', '$2y$10$9UrXl3v.aLL3CGrqJvX9TueNz0xTGSMBmwf0yHs4jdqhHb0Vn8Oiy', 'admin', '2024-03-24', '11:12:59', '0000-00-00', NULL, 1, NULL),
+(2, 'Assets/Auth/IMG_2023-01-14-15-19-12-319.jpg', NULL, 'jay_', NULL, 'Jay', 'Surati', '1234567891', 'male', 'jay@gmail.com', '$2y$10$o7Xj295mljOfWy1d0LOK.OSDmMm3YlhAcUgdzCYr4ykt30fJBfEyW', 'user', '2024-03-24', '12:15:04', '2024-04-15', 'strike', 1, '2'),
+(3, 'Assets/Auth/BEN 10 PFP.PNG', NULL, 'vivek', NULL, 'vivek', 'surati', '1234567892', 'male', 'vivek@gmail.com', '$2y$10$AGXWvqEz.PMx8lAIdbd9TOj9F3uugn6CsCi92tRts5w4o.0aMTovm', 'user', '2024-03-24', '14:37:35', '2024-04-22', 'strike', 1, '3');
 
 -- --------------------------------------------------------
 
