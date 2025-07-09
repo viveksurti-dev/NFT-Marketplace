@@ -8,8 +8,8 @@ $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host       = 'smtp.gmail.com';
 $mail->SMTPAuth   = true;
-$mail->Username   = 'nftmarketplace.acs@gmail.com';
-$mail->Password   = 'jwtzexdqisfqeghp';
+$mail->Username   = '' // Enter Your Email;
+$mail->Password   = '' //Enter Your Security Pass Key;
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 $mail->Port       = 587;
 
