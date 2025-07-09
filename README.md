@@ -65,7 +65,7 @@ NFT/
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/nft-marketplace.git
+   git clone https://github.com/viveksurti-dev/nft-marketplace.git
    ```
 2. **Database setup:**  
    Import SQL files from `Database File/` into your MySQL server.
@@ -81,7 +81,7 @@ NFT/
 
 5. **Run locally:**  
    Place the project in your XAMPP/WAMP `htdocs` folder and visit:  
-   `http://localhost/NFT/`
+   `http://localhost/NFT Marketplace/`
 
 ---
 
