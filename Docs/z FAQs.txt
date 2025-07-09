@@ -1,0 +1,14 @@
+1> What Is NFT?
+=> Non-fungible tokens (NFTs) are assets that have been tokenized via a blockchain. Tokens are unique identification codes created from metadata via an encryption function. These tokens are then stored on a blockchain, while the assets themselves are stored in other places. The connection between the token and the asset is what makes them unique.
+
+
+2> How To Buy NFT?
+=> Once an NFT is minted, the user typically has free reign. Users can list the NFT for sale on the marketplace of their choice, trade it to somebody else or give it away for free.
+
+Some NFT marketplaces, such as OpenSea and Rarible, accept credit cards for NFT payments. But most other NFT marketplaces may need cryptocurrency to make purchases.
+
+On any platform, though, you’ll need a crypto wallet to get started buying NFTs.
+
+A crypto wallet stores your keys to your NFT once it is purchased. These crypto wallets can be stored either offline or online. Offline storage is highly recommended since it’s considered to be more secure.
+
+Once the NFT is either minted, purchased from the marketplace or transferred to you by the NFT’s current owner, it will appear in your wallet.

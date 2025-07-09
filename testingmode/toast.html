@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <style>
+            .cust_alert {
+                background-color: #252525;
+                width: 300px;
+                height: auto;
+                padding: 10px;
+                border-radius: 5px;
+                color: white;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 50;
+            }
+
+            .cust_alert-container {
+                position: fixed;
+                top: 20px;
+                right: -400px;
+                transition: right 0.5s ease-in-out;
+            }
+
+            .cust_alert .cust_alert-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 5px;
+                border-bottom: 2px solid #353535;
+            }
+
+            .cust_alert .cust_alert-header .time {
+                font-size: 20px;
+                color: gray;
+                align-items: center;
+                display: flex;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+
+            .cust_alert .cust_alert-header .brand-info {
+                display: flex;
+                align-items: center;
+            }
+
+            .Header-image {
+                height: 30px;
+                background-color: blueviolet;
+                width: 30px;
+                border-radius: 5px;
+            }
+
+            .cust_alert-body {
+                padding: 5px;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+
+        <div class='cust_alert-container' id='cust_alertContainer'>
+            <div class='cust_alert' id='myAlert'>
+                <div class='cust_alert-header'>
+                    <div class='brand-info'>
+                        <div class='Header-image me-2'></div>
+                        <div class='header-name'>Brand Name</div>
+                    </div>
+                    <div class='time'>
+                        Just Now
+                    </div>
+                </div>
+                <div class='cust_alert-body'>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, facilis.
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var alertContainer = document.getElementById('cust_alertContainer');
+
+                setTimeout(function () {
+                    alertContainer.style.right = '20px';
+
+                    setTimeout(function () {
+                        alertContainer.style.right = '-400px';
+                    }, 5000);
+                }, 500);
+            });
+        </script>
+    </body>
+
+</html>

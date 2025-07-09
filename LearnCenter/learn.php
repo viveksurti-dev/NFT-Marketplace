@@ -1,0 +1,402 @@
+<?php
+require_once "../Navbar.php";
+require_once "../config.php";
+
+$selectArticle = "SELECT * FROM articles";
+$articleData = mysqli_query($conn, $selectArticle);
+
+if ($articleData) {
+    $ARTICLE = mysqli_fetch_assoc($articleData);
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Center - NFT Marketplace</title>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .help-main-1 {
+            /* overflow-x: hidden; */
+            height: 95vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .purple-glow-1 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: blueviolet;
+            border-radius: 50%;
+            opacity: 0.3;
+            mix-blend-mode: hard-light;
+            filter: blur(125px);
+            left: -150px;
+            bottom: -100px;
+        }
+
+        .purple-glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: blueviolet;
+            border-radius: 50%;
+            opacity: 0.3;
+            mix-blend-mode: exclusion;
+            filter: blur(130px);
+            right: -125px;
+            top: -200px;
+        }
+
+        .help-main-1 img {
+            user-select: none;
+            filter: drop-shadow(0px 0px 10px black);
+            width: 100%;
+            object-fit: contain;
+            height: auto;
+        }
+
+        .help-main-1 .waves {
+            position: absolute;
+            z-index: -2;
+            user-select: none;
+            mix-blend-mode: overlay;
+            width: 100%;
+            object-fit: contain;
+            height: auto;
+        }
+
+
+
+        .help-main-1 .waves img {
+            user-select: none;
+            width: 100%;
+            object-fit: contain;
+            height: auto;
+        }
+
+        .morphism-card {
+            overflow: hidden;
+            backdrop-filter: blur(4px) saturate(200%);
+            -webkit-backdrop-filter: blur(4px) saturate(200%);
+            background-color: rgba(17, 25, 40, 0.65);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+
+        .morphism-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));
+        }
+
+        .help-main-2 {
+            position: relative;
+        }
+
+        .green-glow-1 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: springgreen;
+            border-radius: 50%;
+            opacity: 0.15;
+            mix-blend-mode: screen;
+            filter: blur(100px)drop-shadow(0px 0px 100px springgreen);
+            right: -100px;
+            top: 150px;
+        }
+
+        /* sec 3 */
+        .article-card-image {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            border-radius: 5px;
+        }
+
+        .article-card-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .article-standard {
+            position: absolute;
+            z-index: 1;
+            top: 5%;
+            left: 3%;
+            padding: 5px 10px;
+            border-radius: 7px;
+        }
+
+        .card-description {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .article-category {
+            border: 1px solid gray;
+            width: fit-content;
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        a {
+            color: white;
+        }
+
+        a:hover {
+            text-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid help-main-1">
+        <span class="waves"><img src="<?php echo BASE_URL ?>Assets/illu/wave-1.png" alt=""></span>
+        <span class="purple-glow-1"></span>
+        <span class="purple-glow-2"></span>
+        <div class="col-md-6 d-flex justify-content-center align-content-center">
+            <img src="<?php echo BASE_URL ?>Assets/illu/nft-learn-1.png" alt="">
+        </div>
+        <div class="col-md-6 align-content-center">
+            <h4>NFT MARKETPLACE LEARN</h4>
+            <strong>
+                <h1>New To NFTs?</h1>
+            </strong>
+            <strong>
+                <h1>Find your answers here.</h1>
+            </strong>
+            <button class="btn btn-primary">Get Started</button>
+        </div>
+    </div>
+    <!-- section 2 categories -->
+    <div>
+        <div class="container help-main-2" style="position:relative">
+            <span class="green-glow-1"></span>
+            <div class="col-md-3">
+                <h3 class="text-left">
+                    Topics
+                </h3>
+            </div>
+            <div class="mt-3 mb-5 d-flex flex-wrap">
+                <div class="col-md-4 mt-2">
+                    <div class="morphism-card d-flex align-items-center p-4">
+                        <div class="col-md-5">
+                            <img src="<?php echo BASE_URL ?>Assets/illu/help-nft-1.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>
+                                NFTs
+                            </h4>
+                            <small class="caption">
+                                <?php
+                                $articleDetails = "SELECT * FROM articles WHERE articlecategory = 'nft'";
+                                $totalArticle = mysqli_query($conn, $articleDetails);
+
+                                if ($totalArticle) {
+                                    $totalarticles = mysqli_num_rows($totalArticle);
+                                    echo " $totalarticles Articles";
+                                } else {
+                                    echo "Error retrieving user collections: " . mysqli_error($conn);
+                                }
+                                ?>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-2">
+                    <div class="morphism-card d-flex align-items-center p-4">
+                        <div class="col-md-5">
+                            <img src="<?php echo BASE_URL ?>Assets/illu/help-blockchain-1.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>
+                                Blockchain
+                            </h4>
+                            <small class="caption">
+                                <?php
+                                $articleDetails = "SELECT * FROM articles WHERE articlecategory = 'blockchain'";
+                                $totalArticle = mysqli_query($conn, $articleDetails);
+
+                                if ($totalArticle) {
+                                    $totalarticles = mysqli_num_rows($totalArticle);
+                                    echo " $totalarticles Articles";
+                                } else {
+                                    echo "Error retrieving user collections: " . mysqli_error($conn);
+                                }
+                                ?>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-2">
+                    <div class="morphism-card d-flex align-items-center p-4">
+                        <div class="col-md-5">
+                            <img src="<?php echo BASE_URL ?>Assets/illu/help-web3-1.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>
+                                Web3
+                            </h4>
+                            <small class="caption">
+                                <?php
+                                $articleDetails = "SELECT * FROM articles WHERE articlecategory = 'web3'";
+                                $totalArticle = mysqli_query($conn, $articleDetails);
+
+                                if ($totalArticle) {
+                                    $totalarticles = mysqli_num_rows($totalArticle);
+                                    echo " $totalarticles Articles";
+                                } else {
+                                    echo "Error retrieving user collections: " . mysqli_error($conn);
+                                }
+                                ?>
+                            </small>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- section 3 fetured articles -->
+    <div class="container mt-5 mb-5 help-main-3">
+        <div class="col-md-3">
+            <h3 class="text-left">
+                Fetured Guide
+            </h3>
+        </div>
+
+        <div class="d-flex flex-wrap">
+            <?php
+            $selectFeturedarticle = "SELECT * FROM articles LIMIT 3";
+            $Feturedarticle = mysqli_query($conn, $selectFeturedarticle);
+
+            if ($Feturedarticle && mysqli_num_rows($Feturedarticle) > 0) {
+                while ($ARTICLE = mysqli_fetch_assoc($Feturedarticle)) {
+                    $enArticleId = base64_encode(base64_encode(base64_encode(base64_encode($ARTICLE['articleid']))));
+            ?>
+                    <div class="col-md-4 mt-3 mb-3">
+                        <a href="<?php echo BASE_URL ?>LearnCenter/article.php?article=<?php echo $enArticleId ?>">
+                            <div class="morphism-card align-items-center mt-3 " style="font-size:12px;">
+                                <div class="article-card-image">
+                                    <img src="<?php echo BASE_URL . $ARTICLE['articleimage'] ?>">
+                                    <span class="article-standard text-uppercase" style="background-color: 
+                            <?php if ($ARTICLE['articlestandard'] == 'beginner') {
+                                echo '#34C77B';
+                            } else if ($ARTICLE['articlestandard'] == 'intermediate') {
+                                echo '#15B2E5';
+                            } else {
+                                echo '#5D32E9';
+                            } ?>">
+                                        <small>
+                                            <?php echo $ARTICLE['articlestandard']; ?>
+                                        </small>
+                                    </span>
+                                </div>
+                                <div class="p-3">
+                                    <div class="card-title">
+                                        <h4> <?php echo $ARTICLE['articlename']; ?></h4>
+                                    </div>
+                                    <div class="card-description">
+                                        <samll class="caption"> <?php echo $ARTICLE['articleabout']; ?></samll>
+                                    </div>
+                                    <div class="article-category mt-3 text-uppercase">
+                                        <small> <?php echo $ARTICLE['articlecategory']; ?></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+        </div>
+
+    </div>
+
+    <!--section 4 recent article  -->
+    <div class="container help-main-4 mt-5">
+        <div class="col-md-12 d-flex justify-content-between">
+            <h3 class="text-left">
+                Most recent articles
+            </h3>
+            <div>
+                <a href="<?php echo BASE_URL ?>LearnCenter/all-article.php" class="btn btn-outline-primary">View All</a>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap">
+            <?php
+            $selectFeturedarticle = "SELECT * FROM articles ORDER BY articleid DESC LIMIT 6";
+            $Feturedarticle = mysqli_query($conn, $selectFeturedarticle);
+
+            if ($Feturedarticle && mysqli_num_rows($Feturedarticle) > 0) {
+                while ($ARTICLE = mysqli_fetch_assoc($Feturedarticle)) {
+                    $enArticleId = base64_encode(base64_encode(base64_encode(base64_encode($ARTICLE['articleid']))));
+            ?>
+                    <div class="col-md-4 mt-3 mb-3">
+                        <a href="<?php echo BASE_URL ?>LearnCenter/article.php?article=<?php echo $enArticleId ?>">
+                            <div class="morphism-card align-items-center mt-3 " style="font-size:12px;">
+                                <div class="article-card-image">
+                                    <img src="<?php echo BASE_URL . $ARTICLE['articleimage'] ?>">
+                                    <span class="article-standard text-uppercase" style="background-color: 
+                            <?php if ($ARTICLE['articlestandard'] == 'beginner') {
+                                echo '#34C77B';
+                            } else if ($ARTICLE['articlestandard'] == 'intermediate') {
+                                echo '#15B2E5';
+                            } else {
+                                echo '#5D32E9';
+                            } ?>">
+                                        <small>
+                                            <?php echo $ARTICLE['articlestandard']; ?>
+                                        </small>
+                                    </span>
+                                </div>
+                                <div class="p-3">
+                                    <div class="card-title">
+                                        <h4> <?php echo $ARTICLE['articlename']; ?></h4>
+                                    </div>
+                                    <div class="card-description">
+                                        <samll class="caption"> <?php echo $ARTICLE['articleabout']; ?></samll>
+                                    </div>
+                                    <div class="article-category mt-3 text-uppercase">
+                                        <small> <?php echo $ARTICLE['articlecategory']; ?></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

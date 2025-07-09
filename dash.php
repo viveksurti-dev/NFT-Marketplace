@@ -1,0 +1,150 @@
+<?php
+// session_start();
+require_once("Navbar.php");
+
+if (!isset($_SESSION['username'])) {
+    echo "<script>window.location.href='error-001.php?allowRedirect=true';</script>";
+    exit();
+}
+// Database connection details
+include 'config.php';
+
+// Get the username from the session
+$username = $_SESSION['username'];
+
+// Retrieve user details from the database
+$sql = "SELECT * FROM auth WHERE username = '$username'";
+$result = mysqli_query($conn, $sql);
+
+// Initialize $userDetails as an empty array
+$userDetails = array();
+
+if ($result && mysqli_num_rows($result) > 0) {
+    // Fetch the user details
+    $userDetails = mysqli_fetch_assoc($result);
+}
+
+
+// Define variables for user details
+$firstname = isset($userDetails['firstname']) ? $userDetails['firstname'] : '';
+$lastname = isset($userDetails['lastname']) ? $userDetails['lastname'] : '';
+$phonenumber = isset($userDetails['phone']) ? $userDetails['phone'] : '';
+$gender = isset($userDetails['gender']) ? $userDetails['gender'] : '';
+$email = isset($userDetails['email']) ? $userDetails['email'] : '';
+$role = isset($userDetails['user_role']) ? $userDetails['user_role'] : '';
+$userimage = isset($userDetails['userimage']) ? $userDetails['userimage'] : '';
+$userbackimage = isset($userDetails['userbackimage']) ? $userDetails['userbackimage'] : '';
+
+?>
+
+<div class="container-fluid">
+    <div class="dashboard">
+
+        <div class="dash-sec-profile col-md-8">
+            <div class="profile-background">
+                <div class="user-back-images"> <?php if (!empty($userDetails)) { ?>
+                        <?php if (!empty($userbackimage)) { ?>
+                            <img src="<?php echo $userbackimage; ?>" alt="User Image" class="img-fluid user-back-image">
+
+                        <?php } ?>
+                        <?php if (empty($userbackimage)) { ?>
+
+                        <?php } ?>
+                    <?php } else { ?>
+                        <p>User details not found.</p>
+                    <?php } ?>
+
+                </div>
+            </div>
+            <div class="profile-front container">
+                <div class="user-image"> <?php if (!empty($userDetails)) { ?>
+                        <?php if (!empty($userimage)) { ?>
+                            <img src="<?php echo $userimage; ?>" alt="User Image" class="img-fluid user-image">
+
+                        <?php } ?>
+                        <?php if (empty($userimage)) { ?>
+                            <img src="Assets/auth/unkown.png" alt="User Image" class="img-fluid rounded-2">
+                        <?php } ?>
+                    <?php } else { ?>
+                        <p>User details not found.</p>
+                    <?php } ?>
+
+                </div>
+                <!-- Profile - User Detail -->
+                <div class="user-info col-md-4">
+                    <div class="user-name">@<?php echo $username; ?></div>
+                    <div class="name"><?php echo $firstname; ?>&nbsp;<?php echo $lastname; ?></div>
+                    <div class="user-mail mt-2"><?php echo $email; ?></div>
+                    <div class="gender mt-2"><?php
+                                                if ($gender == 'male') {
+                                                    echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-male" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8"/>
+              </svg>';
+                                                } elseif ($gender == 'female') {
+                                                    echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-female" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1a4 4 0 1 0 0 8 4 4 0 0 0 0-8M3 5a5 5 0 1 1 5.5 4.975V12h2a.5.5 0 0 1 0 1h-2v2.5a.5.5 0 0 1-1 0V13h-2a.5.5 0 0 1 0-1h2V9.975A5 5 0 0 1 3 5"/>
+              </svg>';
+                                                } else {
+                                                    echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-3.45 3.45A4 4 0 0 1 8.5 10.97V13H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V14H6a.5.5 0 0 1 0-1h1.5v-2.03a4 4 0 1 1 3.471-6.648L14.293 1zm-.997 4.346a3 3 0 1 0-5.006 3.309 3 3 0 0 0 5.006-3.31z"/>
+              </svg>';
+                                                } ?> <?php echo $gender; ?></div>
+                </div>
+            </div>
+            <div class="user-about text-left container">
+                <h5>About Me</h5>
+                <p><?php echo $USER['userabout'] ?></p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dash-sec-profile">
+                <div class="dash-about-title">
+                    <center>
+                        <h4>More Details</h4>
+                    </center>
+                </div>
+                <div class="dash-abt-info">
+                    <div class="info">
+                        <div class="info-title">User Name</div>
+                        <div class="info-detail"><?php echo $username; ?></div>
+                    </div>
+                    <div class="info">
+                        <div class="info-title">Email</div>
+                        <div class="info-detail"><?php echo $email; ?></div>
+                    </div>
+                    <div class="info">
+                        <div class="info-title">Phone</div>
+                        <div class="info-detail">
+                            <?php
+                            if ($phonenumber) {
+                                echo $phonenumber;
+                            } else {
+                                echo '<br/>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="info-title">Gender</div>
+                        <div class="info-detail"><?php echo $gender; ?></div>
+                    </div>
+                    <div class="info">
+                        <a class="btn btn-profile w-100" href="editProfile.php?username=<?php echo urlencode($userDetails['username']); ?>">Edit Profile</a>
+
+                        <!-- <a href=" ?logout" class="btn btn-logout">Logout</a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="dash-sec-profile">
+                <div class="dash-about-title">
+                    <center>
+                        <h4>Wallet</h4>
+                    </center>
+                </div>
+                <div class="dash-abt-info">
+                    <?php require_once 'Trans/DashWallet.php'; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

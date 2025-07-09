@@ -1,0 +1,235 @@
+@import url(main.css);
+
+.activeWallet {
+  background: linear-gradient(90deg, rgb(1, 0, 16) 0%, rgb(24, 0, 49) 100%);
+}
+@media screen and (max-width: 1080px) {
+  .activeWallet {
+    background: linear-gradient(180deg, rgb(1, 0, 16) 0%, rgb(24, 0, 49) 100%);
+  }
+}
+.activewallet-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+}
+.activewallet-container img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  overflow: hidden;
+  object-fit: contain;
+  /* mix-blend-mode: lighten; */
+  animation: up-down infinite 2s linear;
+  filter: drop-shadow(5px 0px 10px rgba(0, 0, 0, 0.437));
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.container-active-detail {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.btn-wallet {
+  border: 1px solid;
+  color: blueviolet;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.btn-wallet:hover {
+  border: 1px solid;
+  color: blueviolet;
+  background-color: #12121261;
+  padding: 10px;
+  box-shadow: inset 0px 0px 10px blueviolet;
+}
+
+/* Main Wallet */
+
+.container-wallet .wallet-menus {
+  background-color: #181818;
+  width: 75px;
+  height: 90.5vh;
+  position: relative;
+  left: 0;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #232323;
+  /* justify-content: space-between; */
+}
+
+.wallet-menus .head {
+  width: 100%;
+  height: 100%;
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 5px;
+  background-color: #202020;
+  overflow: hidden;
+}
+
+.wallet-menus .head img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.wallet-menus .menus {
+  border-top: 1px solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.wallet-menus .menus .btn-menu {
+  background-color: #232323;
+  padding: 10px 15px;
+  color: gray;
+  font-size: 18px;
+}
+
+.wallet-menus .menus .btn-menu:hover {
+  background-color: #232323;
+  padding: 10px 15px;
+  color: white;
+  text-shadow: 0px 0px 10px white;
+}
+
+.wallet-content {
+  position: relative;
+  padding: 15px;
+  width: 100%;
+  height: 90vh;
+  overflow-y: scroll;
+  background-color: #151515;
+  border-radius: 10px;
+}
+.wallet-content .w-info p {
+  font-size: 14px;
+}
+.wallet-content .w-info p span {
+  color: blueviolet;
+}
+
+.transaction-info .card-heading span {
+  color: blueviolet;
+  /* font-size: 20px; */
+  text-shadow: 5px 0px 10px blueviolet;
+}
+.profit-price {
+  color: rgba(0, 215, 0);
+}
+.loss-price {
+  color: rgb(215, 0, 32);
+}
+
+/* Transaction Fetching */
+.transactions {
+  background-color: #151515;
+  border-radius: 5px;
+  border-radius: 5px;
+}
+
+.wallet-menus .menus .btn-menu:active {
+  background-color: #252525;
+  padding: 10px 15px;
+  color: white;
+  text-shadow: 0px 0px 10px white !important;
+}
+
+.container-transactions .card-heading span {
+  color: blueviolet;
+  font-size: 20px;
+  text-shadow: 5px 0px 10px blueviolet, 10px 0px 10px blueviolet;
+}
+
+.transaction-date {
+  background-color: #202020;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  padding: 10px;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.transaction-person {
+  font-size: 18px;
+  margin: 0;
+}
+
+.transaction-reason {
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.transaction-amount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border-left: 1px solid #222222;
+}
+
+.transaction-amount p {
+  font-size: 20px;
+  padding: 15px;
+  margin: 0;
+}
+
+/* Pending Payments */
+.product-image {
+  height: 100%;
+  max-height: 100px;
+  width: 100%;
+  max-width: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.product-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.status p {
+  margin: 0;
+  padding: 0;
+}
+
+.pending {
+  padding: 10px;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #693800;
+  border: 1px solid orange;
+}
